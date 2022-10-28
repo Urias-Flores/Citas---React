@@ -1,4 +1,6 @@
-const name = ({ pacientes }) => {
+import {flagEnabled} from "tailwindcss/lib/featureFlags.js";
+
+const name = ({ pacientes, setPaciente }) => {
 
     const { Nombre, Propietario, Correo, Alta, Sintomas } = pacientes;
 
@@ -26,6 +28,17 @@ const name = ({ pacientes }) => {
                         {Sintomas}
                     </span>
                 </p>
+
+                <div className="flex justify-between mt-10">
+                    <button
+                        type="button"
+                        className="px-4 py-2 bg-indigo-700 hover:bg-indigo-800 uppercase text-white rounded-md font-bold mr-2"
+                        onClick={() => {setPaciente(pacientes)}}
+                    >
+                        Editar
+                    </button>
+                    <button type="button" className="px-4 py-2 bg-red-700 hover:bg-red-800 uppercase text-white rounded-md font-bold">Eliminar</button>
+                </div>
             </div>
         </>
     )

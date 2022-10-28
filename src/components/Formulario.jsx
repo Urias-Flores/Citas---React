@@ -27,7 +27,7 @@ function Formulario({ setPacientes, Pacientes }){
         }
         setError(false);
 
-        const NuevoPaciente = {Nombre, Propietario, Correo, Alta, Sintomas, ID:generateID()}
+        const NuevoPaciente = {Nombre, Propietario, Correo, Alta, Sintomas, ID : generateID()}
 
         setPacientes([...Pacientes, NuevoPaciente]);
 
