@@ -1,7 +1,9 @@
+import { useEffect } from "react";
 import Paciente from "./Paciente.jsx";
 import paciente from "./Paciente.jsx";
 
 const ListadoPaciente = ({ Pacientes, setPaciente }) => {
+
     return (
         <div className="md:w-1/2 lg:3/5">
             {Pacientes && Pacientes.length ?

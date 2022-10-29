@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import Header from "./components/Header.jsx";
 import Formulario from "./components/Formulario.jsx";
 import ListadoPaciente from "./components/ListadoPaciente.jsx";
@@ -8,6 +8,8 @@ function App() {
     const [Pacientes, setPacientes] = useState([]);
     const [Paciente, setPaciente] = useState({})
 
+
+
     return (
         <div className="container mx-auto mt-5">
             <Header/>
@@ -15,7 +17,9 @@ function App() {
                 <Formulario
                     Pacientes={Pacientes}
                     setPacientes={setPacientes}
+                    Paciente = {Paciente}
                 />
+
                 <ListadoPaciente
                     Pacientes = {Pacientes}
                     setPaciente = {setPaciente}
