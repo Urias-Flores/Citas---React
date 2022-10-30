@@ -1,7 +1,8 @@
 import {useState, useEffect} from "react";
 import Error from "./Error.jsx";
+import paciente from "./Paciente.jsx";
 
-function Formulario({ setPacientes, Pacientes, Paciente }){
+function Formulario({ setPacientes, Pacientes, Paciente, setPaciente }){
 
     const [Nombre, setNombre] = useState("");
     const [Propietario, setPropietario] = useState("");
@@ -9,7 +10,6 @@ function Formulario({ setPacientes, Pacientes, Paciente }){
     const [Alta, setAlta] = useState("");
     const [Sintomas, setSintomas] = useState("");
 
-    const [ButtonAdd, setButtonAdd] = useState("Agregar paciente");
     const [error, setError] = useState(false);
 
     const generateID = () =>{
@@ -20,7 +20,7 @@ function Formulario({ setPacientes, Pacientes, Paciente }){
     };
 
     useEffect(() => {
-        if(Object.keys(Pacientes) > 0){
+        if(Object.keys(Pacientes).length > 0){
             setNombre(Paciente.Nombre);
             setPropietario(Paciente.Propietario);
             setCorreo(Paciente.Correo);
@@ -37,12 +37,23 @@ function Formulario({ setPacientes, Pacientes, Paciente }){
             setError(true);
             return;
         }
+
+
+        const NuevoPaciente = {Nombre, Propietario, Correo, Alta, Sintomas}
+
+        if(!Paciente.ID){
+            //Agregando nuevo paciente
+            NuevoPaciente.ID = generateID()
+            setPacientes([...Pacientes, NuevoPaciente]);
+        }else{
+            //Editan paciente en memoria y editando el arreglo de pacientes actual
+            NuevoPaciente.ID = Paciente.ID;
+            const NuevoArregloPacientes = Pacientes.map( pacienteState => pacienteState.ID == Paciente.ID ? NuevoPaciente : pacienteState );
+            setPacientes(NuevoArregloPacientes);
+            setPaciente({});
+        }
+
         setError(false);
-
-        const NuevoPaciente = {Nombre, Propietario, Correo, Alta, Sintomas, ID : generateID()}
-
-        setPacientes([...Pacientes, NuevoPaciente]);
-
         clearFields();
     };
 
@@ -108,7 +119,7 @@ function Formulario({ setPacientes, Pacientes, Paciente }){
                         className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
                         id="Alta"
                         value={Alta}
-                        onChange={ (e) => { setAlta(e.target.value); console.log(Alta) } }
+                        onChange={ (e) => { setAlta(e.target.value); } }
                     />
                 </div>
 
@@ -126,7 +137,7 @@ function Formulario({ setPacientes, Pacientes, Paciente }){
                 <input
                     type="submit"
                     className="bg-indigo-600 rounded-md w-full p-3 text-white uppercase font-bold hover:bg-indigo-700 cursor-pointer transition-all"
-                    value={ButtonAdd}
+                    value={ Paciente.ID ? "Guardar cambios" : "Agregar paciente" }
                 />
             </form>
         </div>

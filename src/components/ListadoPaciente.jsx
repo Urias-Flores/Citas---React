@@ -15,10 +15,10 @@ const ListadoPaciente = ({ Pacientes, setPaciente }) => {
                         </p>
 
                         <div className="md:h-screen md:overflow-y-scroll">
-                            { Pacientes.map( p => (
+                            { Pacientes.map( paciente => (
                                 <Paciente
-                                    key = {p.ID}
-                                    pacientes = {p}
+                                    key = {paciente.ID}
+                                    pacientes = {paciente}
                                     setPaciente = {setPaciente}
                                 />
                             ))}
