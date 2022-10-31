@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import Paciente from "./Paciente.jsx";
 import paciente from "./Paciente.jsx";
 
-const ListadoPaciente = ({ Pacientes, setPaciente }) => {
+const ListadoPaciente = ({ Pacientes, setPaciente, deletePaciente }) => {
 
     return (
         <div className="md:w-3/5 lg:3/5">
@@ -18,8 +18,9 @@ const ListadoPaciente = ({ Pacientes, setPaciente }) => {
                             { Pacientes.map( paciente => (
                                 <Paciente
                                     key = {paciente.ID}
-                                    pacientes = {paciente}
+                                    Pacientes = {paciente}
                                     setPaciente = {setPaciente}
+                                    deletePaciente = {deletePaciente}
                                 />
                             ))}
                         </div>
@@ -28,7 +29,7 @@ const ListadoPaciente = ({ Pacientes, setPaciente }) => {
                 (
                     <>
                         <h2 className="font-black text-center text-3xl">No hay paciente</h2>
-                        <p className="text-xl text-center mt-5 mb-3 font-bold">Comiendo ahora {''}
+                        <p className="text-xl text-center mt-5 mb-3 font-bold">Comienza ahora {''}
                             <span className="text-indigo-600 font-black">agregando pacientes</span>
                         </p>
                     </>

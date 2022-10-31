@@ -1,8 +1,8 @@
 import {flagEnabled} from "tailwindcss/lib/featureFlags.js";
 
-const name = ({ pacientes, setPaciente }) => {
+const name = ({ Pacientes, setPaciente, deletePaciente }) => {
 
-    const { Nombre, Propietario, Correo, Alta, Sintomas } = pacientes;
+    const { Nombre, Propietario, Correo, Alta, Sintomas, ID } = Pacientes;
 
     return (
         <>
@@ -33,18 +33,14 @@ const name = ({ pacientes, setPaciente }) => {
                     <button
                         type="button"
                         className="px-4 py-2 bg-indigo-700 hover:bg-indigo-800 uppercase text-white rounded-md font-bold mr-2"
-                        onClick={() => {setPaciente(pacientes)}}
+                        onClick={ () => {setPaciente(Pacientes)} }
                     >
                         Editar
                     </button>
                     <button
                         type="button"
                         className="px-4 py-2 bg-red-700 hover:bg-red-800 uppercase text-white rounded-md font-bold"
-                        onClick={
-                            () => {
-                                setPaciente(...[pacientes].filter(value => value.ID === pacientes.ID))
-                            }
-                        }
+                        onClick={ () => deletePaciente(ID) }
                     >
                         Eliminar
                     </button>
