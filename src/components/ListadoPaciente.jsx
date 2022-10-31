@@ -5,7 +5,7 @@ import paciente from "./Paciente.jsx";
 const ListadoPaciente = ({ Pacientes, setPaciente }) => {
 
     return (
-        <div className="md:w-1/2 lg:3/5">
+        <div className="md:w-3/5 lg:3/5">
             {Pacientes && Pacientes.length ?
                 (
                     <>

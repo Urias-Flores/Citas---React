@@ -37,7 +37,17 @@ const name = ({ pacientes, setPaciente }) => {
                     >
                         Editar
                     </button>
-                    <button type="button" className="px-4 py-2 bg-red-700 hover:bg-red-800 uppercase text-white rounded-md font-bold">Eliminar</button>
+                    <button
+                        type="button"
+                        className="px-4 py-2 bg-red-700 hover:bg-red-800 uppercase text-white rounded-md font-bold"
+                        onClick={
+                            () => {
+                                setPaciente(...[pacientes].filter(value => value.ID === pacientes.ID))
+                            }
+                        }
+                    >
+                        Eliminar
+                    </button>
                 </div>
             </div>
         </>

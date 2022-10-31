@@ -66,7 +66,7 @@ function Formulario({ setPacientes, Pacientes, Paciente, setPaciente }){
     };
 
     return(
-        <div className="md:w-1/2 lg:w-2/5 mx-5">
+        <div className="md:w-2/5 lg:w-2/5 mx-5">
             <h2 className="font-black text-center text-3xl">Seguimiento de pacientes</h2>
             <p className="text-xl text-center mt-5 font-bold mb-5">Ingresa paciente y
                 <span className="text-indigo-600 font-black"> Administralos</span>
