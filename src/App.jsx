@@ -9,8 +9,12 @@ function App() {
     const [Paciente, setPaciente] = useState({})
 
     useEffect(() => {
-        const ActualLocalStorage = JSON.parse( localStorage.getItem("Pacientes") ) ?? [];
-        setPacientes(ActualLocalStorage);
+        const LoadLocalStorage = () =>{
+            const ActualLocalStorage = JSON.parse( localStorage.getItem("Pacientes") ) ?? [];
+            setPacientes(ActualLocalStorage);
+        }
+
+        LoadLocalStorage();
     }, []);
 
 
